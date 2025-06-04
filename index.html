@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Pagina web del club de futbol SD SALVATIERRA"
+    />
+    <meta name="keywords" content="sdsalvatierra, futbol, club, deporte" />
+    <meta name="author" content="David Da Costa" />
+    <title>SD SALVATIERRA</title>
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+  </head>
+
+  <body>
+    <header class="header">
+      <a href="index.html" class="logo-link" title="Página de inicio">
+        <img src="assets/favicon.png" alt="Logo SD SALVATIERRA" />
+      </a>
+      <nav class="menu">
+        <button>Noticias</button>
+        <button>Primer equipo</button>
+        <button>Cantera</button>
+        <button>Socios</button>
+      </nav>
+    </header>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #000000;
+        color: white;
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        z-index: 1000;
+      }
+
+      .logo-link {
+        margin-right: 30px;
+      }
+
+      .logo-link img {
+        height: 50px;
+        width: auto;
+        display: block;
+      }
+
+      .menu {
+        display: flex;
+        gap: 15px;
+      }
+
+      .menu button {
+        background-color: #ffffff;
+        color: rgb(0, 0, 0);
+        border: none;
+        padding: 10px 16px;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .menu button:hover {
+        background-color: #fffb00;
+      }
+
+      main {
+        margin-top: 70px;
+      }
+
+      .contenido {
+        text-align: center;
+        padding: 0;
+      }
+
+      .imagen-con-titulo {
+        position: relative;
+        width: 100vw;
+        margin: 0 auto;
+      }
+
+      .imagen-con-titulo img {
+        display: block;
+        width: 100%;
+        height: auto;
+        filter: brightness(60%);
+      }
+
+      .titulo-superpuesto {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 7em;
+        font-weight: bold;
+        text-align: center;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        margin: 0;
+      }
+
+      .noticias {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+      .noticia img {
+        width: 100%;
+        max-height: 300px;
+        object-fit: cover;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 15px;
+      }
+
+      .noticias-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .noticias h2 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .noticia {
+        background-color: #f0f0f0;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        font-size: 1.2em;
+        text-align: center;
+      }
+
+      .noticia h3 {
+        margin-top: 0;
+      }
+
+      .noticia p {
+        margin-bottom: 10px;
+      }
+
+      .noticia blockquote {
+        font-style: italic;
+        background-color: #ddd;
+        padding: 10px;
+        border-left: 5px solid #fffb00;
+        margin: 15px 0;
+      }
+
+      .calendario-resultados {
+        max-width: 1000px;
+        margin: 40px auto 60px;
+        padding: 0 20px;
+        display: flex;
+        gap: 40px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .calendario,
+      .resultados {
+        flex: 1 1 400px;
+      }
+
+      .calendario h2,
+      .resultados h2 {
+        font-size: 2em;
+        margin-bottom: 15px;
+        text-align: center;
+      }
+
+      .calendario ul {
+        list-style: none;
+        padding: 0;
+        font-size: 1.1em;
+        line-height: 1.6;
+      }
+
+      .calendario ul li {
+        background-color: #eaeaea;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 6px;
+        text-align: center;
+      }
+
+      .resultados table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 1em;
+      }
+
+      .resultados th,
+      .resultados td {
+        border: 1px solid #ccc;
+        padding: 8px 12px;
+        text-align: center;
+      }
+
+      .resultados thead {
+        background-color: #000000;
+        color: white;
+      }
+
+      .footer-content {
+        max-width: 1000px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        color: white;
+        background-color: #111;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .footer-content h3 {
+        margin-bottom: 8px;
+      }
+
+      .footer-content a {
+        color: #fffb00;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .footer-content a:hover {
+        text-decoration: underline;
+      }
+
+      .contacto p {
+        margin: 5px 0;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      label {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      input[type='text'],
+      input[type='email'],
+      textarea {
+        padding: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1em;
+        resize: vertical;
+      }
+
+      textarea {
+        min-height: 100px;
+      }
+
+      button.enviar-btn {
+        background-color: #000000;
+        color: white;
+        border: none;
+        padding: 12px;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button.enviar-btn:hover {
+        background-color: #fffb00;
+        color: black;
+      }
+
+      .inscripcion-contacto-container {
+        max-width: 1000px;
+        margin: 40px auto 60px;
+        padding: 0 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 40px;
+        flex-wrap: nowrap;
+      }
+
+      .formulario-inscripcion,
+      .contacto-redes {
+        flex: 1 1 40%;
+      }
+
+      .contacto-redes {
+        color: white;
+        background-color: #111;
+        padding: 20px;
+        border-radius: 8px;
+        flex: 2 1 60%;
+      }
+
+      .contacto-redes h3 {
+        margin-top: 0;
+        margin-bottom: 15px;
+      }
+
+      .contacto-redes a {
+        color: #fffb00;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .contacto-redes a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 700px) {
+        .inscripcion-contacto-container {
+          flex-wrap: wrap;
+        }
+
+        .formulario-inscripcion,
+        .contacto-redes {
+          flex: 1 1 100%;
+        }
+
+        .contacto-redes {
+          text-align: right;
+        }
+        .noticias-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+    <main>
+      <section class="contenido">
+        <figure class="imagen-con-titulo">
+          <img
+            src="assets/imagen_representativa.jpeg"
+            alt="Imagen del club SD SALVATIERRA"
+          />
+          <h1 class="titulo-superpuesto">SD SALVATIERRA</h1>
+        </figure>
+      </section>
+
+      <section class="noticias">
+        <h2>Noticias</h2>
+        <div class="noticias-grid">
+          <article class="noticia">
+            <img
+              src="assets/imagen_noticia1.jpeg"
+              alt="Equipo SD Salvatierra"
+            />
+            <h3>EL SD SALVATIERRA SE CLASIFICA A LOS PLAY-OFFS</h3>
+            <p>
+              El SD Salvatierra ha logrado clasificarse para los play-off de
+              ascenso tras finalizar la temporada en sexta posición con 20
+              puntos. Su balance ha sido de 5 victorias, 5 empates y 6 derrotas,
+              con 33 goles a favor y 34 en contra. A pesar de una campaña
+              irregular, el equipo ha conseguido colarse en la fase decisiva y
+              se enfrentará en semifinales al CD Nanclares, que terminó tercero
+              en la tabla. Será un reto exigente, pero la ilusión por el ascenso
+              sigue intacta en Salvatierra.
+            </p>
+          </article>
+          <article class="noticia">
+            <img
+              src="/assets/imagen_noticia2.jpeg"
+              alt="SD Salvatierra celebrando el 1-0"
+            />
+            <h3>EL SD SALVATIERRA GOLPEA PRIMERO</h3>
+            <p>
+              El SD Salvatierra dio un paso importante hacia la final del
+              play-off de ascenso tras imponerse por 2-0 al CD Nanclares en el
+              partido de ida. Gorka abrió el marcador en el minuto 19 y Salek
+              amplió la ventaja en el 67, dejando encarrilada la eliminatoria.
+              Con dos goles a favor, el equipo afrontará el partido de vuelta en
+              el campo de Arrate con la ilusión de sellar su pase a la final.
+            </p>
+          </article>
+          <article class="noticia">
+            <img
+              src="/assets/imagen_noticia3.jpeg"
+              alt="El SD Salvatierra celebrando con los aficionados"
+            />
+            <h3>EL SD SALVATIERRA ES FINALISTA</h3>
+            <p>
+              La SD Salvatierra protagonizó una remontada épica en el campo de
+              Arrate y logró el pase a la final del play-off de ascenso. El CD
+              Nanclares igualó la eliminatoria rápidamente con goles en el
+              minuto 8 y el 17. Poco después, un penalti a favor permitió al
+              Salvatierra recortar distancias y ponerse 2-3 en el global. Sin
+              embargo, en el último minuto del tiempo reglamentario, un penalti
+              en contra significó el 3-3, llevando el partido a la prórroga,
+              donde el empate beneficiaba al equipo local. Cuando todo parecía
+              perdido, Tirfe apareció en el minuto 115 para marcar el gol
+              decisivo y clasificar al Salvatierra para la gran final.
+            </p>
+          </article>
+          <article class="noticia">
+            <img
+              src="/assets/imagen_noticia4.jpeg"
+              alt="Minuto de silencio en la ida del partido del Nanclares por la muerte del padre de un jugador"
+            />
+            <h3>A UN PASO DEL OBJETIVO</h3>
+            <p>
+              Tras una emocionante semifinal, la SD Salvatierra disputará la
+              gran final del play-off de ascenso ante el Treviño. El partido
+              decisivo se jugará en campo neutral, en el estadio de Astrónomos.
+              Los de Salvatierra llegan con la moral en alto tras eliminar al CD
+              Nanclares en una vibrante eliminatoria, y ahora buscarán culminar
+              su gesta con el ascenso. Enfrente tendrán a un Treviño sólido y
+              competitivo, lo que promete una final intensa y emocionante. Todo
+              por decidir en 90 (o más) minutos.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <aside class="calendario-resultados">
+        <section class="calendario">
+          <h2>Próximos partidos</h2>
+          <ul>
+            <li>7/06/2025 - SD Salvatierra vs Treviño</li>
+          </ul>
+        </section>
+
+        <section class="resultados">
+          <h2>Últimos resultados</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Local</th>
+                <th>Resultado</th>
+                <th>Visitante</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>17/05/2025</td>
+                <td>SD Salvatierra</td>
+                <td>2 - 2</td>
+                <td>Treviño</td>
+              </tr>
+              <tr>
+                <td>24/05/2025</td>
+                <td>SD Salvatierra</td>
+                <td>2 - 0</td>
+                <td>CD Nanclares</td>
+              </tr>
+              <tr>
+                <td>31/05/2025</td>
+                <td>CD Nanclares</td>
+                <td>3 - 2</td>
+                <td>SD Salvatierra</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </aside>
+
+      <div class="inscripcion-contacto-container">
+        <section class="formulario-inscripcion">
+          <h3>Unete a nosotros</h3>
+          <form action="#" method="POST" novalidate>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required />
+
+            <label for="correo">Correo electrónico:</label>
+            <input type="email" id="correo" name="correo" required />
+
+            <label for="asunto">Edad:</label>
+            <input type="text" id="asunto" name="asunto" required />
+            <button type="submit" class="enviar-btn">Enviar</button>
+          </form>
+        </section>
+
+        <section class="contacto-redes">
+          <h2>Contacto</h2>
+          <p>
+            Email:
+            <a href="mailto:contacto@sdsalvatierra.com"
+              >contacto@sdsalvatierra.com</a
+            >
+          </p>
+          <p>Teléfono: <a href="tel:+34912345678">+34 912 345 678</a></p>
+          <h2>Síguenos en redes sociales</h2>
+          <p>
+            <a href="#" aria-label="Facebook SD Salvatierra">Facebook</a> |
+            <a href="#" aria-label="Twitter SD Salvatierra">Twitter</a> |
+            <a href="#" aria-label="Instagram SD Salvatierra">Instagram</a>
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer-content">
+      <p>© 2025 SD SALVATIERRA - Todos los derechos reservados.</p>
+    </footer>
+  </body>
+</html>
